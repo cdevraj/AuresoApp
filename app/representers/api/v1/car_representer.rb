@@ -1,13 +1,15 @@
 module Api::V1::CarRepresenter
   include Roar::JSON
+  include Representable::JSON
   nested :data do
     nested :car do  
       property :id  
       property :slug  
       property :get_max_speed, as: :max_speed
-      # property :max_speed_on_track, getter: lambda { |opts| opts[:track] }
+      property :max_speed_on_track
     end
   end
+
 
 
   def get_max_speed

@@ -3,18 +3,15 @@ class Api::V1::CarsController < ApplicationController
   include Roar::Rails::ControllerAdditions
 
   def index
-    car = Car.by_slug(params[:slug])
-    puts "car------#{car.inspect}"
+    puts params[:track]
+      car = Car.by_slug(params[:slug]).first
+      track = Track.find_by_name(params[:track]) if params[:track]
     if car
-      respond_with car , represent_with: Api::V1::CarRepresenter
+      track_details = track.get_metadata(car)
+      respond_with car, :track_details => track_details
     else
       render json: {error: "car #{params[:slug]} could not be found"}
     end
-  end
-
-  private
-  def track_params
-    params.permit(:slug, :track)
   end
 
 end
