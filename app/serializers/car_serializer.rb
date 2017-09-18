@@ -1,8 +1,5 @@
 class CarSerializer < ActiveModel::Serializer
-	attributes :id  
-	attributes :slug  
-	attributes :get_max_speed
-	attributes :max_speed_on_track
+	attributes :id, :slug, :max_speed, :max_speed_on_track  
 
 	def max_speed_on_track
 		if @instance_options[:track]
@@ -12,7 +9,7 @@ class CarSerializer < ActiveModel::Serializer
 		end
 	end
 
-	def get_max_speed
+	def max_speed
 		return "0 Km/hr" unless object.max_speed
 		"#{object.max_speed} Km/hr"
 	end
