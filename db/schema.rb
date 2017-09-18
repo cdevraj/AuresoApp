@@ -32,5 +32,4 @@ ActiveRecord::Schema.define(version: 20170918205708) do
   end
 
   add_index "tracks", ["name"], name: "index_tracks_on_name"
-
 end
