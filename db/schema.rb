@@ -30,4 +30,6 @@ ActiveRecord::Schema.define(version: 20170918160642) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "tracks", ["name"], name: "index_tracks_on_name"
+
 end
