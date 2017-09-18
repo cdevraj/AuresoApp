@@ -1,4 +1,4 @@
-class Api::V1::CarsController < ApplicationController
+class Api::V2::CarsController < ApplicationController
 	respond_to :json
 
 	def index

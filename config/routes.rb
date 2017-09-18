@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/cars/:slug', to: 'cars#index'
     end
+    namespace :v2 do
+      get '/cars/:slug', to: 'cars#index'
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
