@@ -11,5 +11,4 @@ class Api::V1::CarsController < ApplicationController
       render json: {error: "car #{params[:slug]} could not be found"}
     end
   end
-
 end
