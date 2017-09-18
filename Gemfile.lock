@@ -162,7 +162,6 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   rails (= 4.2.8)
-  representable
   responders (~> 2.0)
   rspec-rails (~> 3.5)
   sdoc (~> 0.4.0)
