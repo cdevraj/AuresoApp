@@ -8,7 +8,7 @@ describe CarSerializer do
 
       # Create a serializer instance
       @serializer = CarSerializer.new(@car, { track: @track, track_params: @track.name })
-
+      
       # Create a serialization based on the configured adapter
       @serialization = ActiveModelSerializers::Adapter.create(@serializer)
     end

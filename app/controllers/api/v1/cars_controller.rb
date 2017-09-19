@@ -1,5 +1,4 @@
 class Api::V1::CarsController < ApplicationController
-
   def show
     car = Car.friendly.find(params[:id]) rescue nil
     track = Track.by_name(params[:track]).first if params[:track]

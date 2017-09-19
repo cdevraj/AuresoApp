@@ -37,6 +37,8 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  # config.include ApiHelper, type: :api
+  # config.include Requests::JsonHelpers, type: :api
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryGirl::Syntax::Methods
@@ -70,6 +72,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.formatter = :documentation
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
