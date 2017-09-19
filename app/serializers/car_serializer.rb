@@ -5,7 +5,7 @@ class CarSerializer < ActiveModel::Serializer
     return 'no track selected' if @instance_options[:track_name].blank?
     track = Track.by_name(@instance_options[:track_name]).first
     return 'track not found' if track.blank?
-    "#{track.get_metadata(object.max_speed).to_i} Km/hr"
+    "#{track.get_metadata(object.max_speed, @instance_options[:with_time_zone]).to_i} Km/hr"
   end
 
   def max_speed
