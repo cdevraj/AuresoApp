@@ -47,12 +47,12 @@ describe Api::V1::CarsController, :type => :controller do
     let(:server_response) { JSON.parse(response.body) }
 
     it "responds responds with the exact response of car and max_speed_on_track is not 'no track selected'" do
-      expect(server_response).to eq("data"=>{"car"=>{"id"=>1, "slug"=>"sabaru_impreza", "max_speed"=>"100 Km/hr", "max_speed_on_track"=>"65 Km/hr"}})
+      expect(server_response).to eq("data"=>{"car"=>{"id"=>1, "slug"=>"sabaru_impreza", "max_speed"=>"100 Km/hr", "max_speed_on_track"=>"65.0 Km/hr"}})
       expect(server_response['data']['car']['max_speed_on_track']).not_to eq("no track selected")
     end
 
     it "should return the calculated max speed based on track" do
-      expect(server_response['data']['car']['max_speed_on_track']).to eq("65 Km/hr")
+      expect(server_response['data']['car']['max_speed_on_track']).to eq("65.0 Km/hr")
     end
   end
 

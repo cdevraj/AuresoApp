@@ -22,3 +22,4 @@ Track.destroy_all
 Track.create({name: 'nurburgring', surface_type: 'snow', slow_factor: (20..35).to_a.sample, time_zone: 'CET'})
 Track.create({name: 'sydney_motorsport_park', surface_type:'gravel', slow_factor:  (10..19).to_a.sample, time_zone: 'Melbourne'})
 Track.create({name: 'guia_circut', surface_type: 'asphalt', slow_factor: (1..9).to_a.sample, time_zone: 'Beijing'})
+Track.create({name: 'circuit_gilles_villenaeuve_montreal', surface_type: 'gravel', slow_factor: (15..30).to_a.sample, time_zone: 'Eastern Time (US & Canada)'})

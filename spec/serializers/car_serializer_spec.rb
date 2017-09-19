@@ -22,7 +22,7 @@ describe CarSerializer do
       expect(subject['max_speed']).to eql("#{@car.max_speed} Km/hr")
     end
     it 'should have a max_speed on track that matches' do
-      expect(subject['max_speed_on_track']).to eql("65 Km/hr")
+      expect(subject['max_speed_on_track']).to eql("65.0 Km/hr")
     end
   end
 
