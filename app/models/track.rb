@@ -8,38 +8,25 @@ class Track < ActiveRecord::Base
 
 
   def slow_down_for_zone(max_speed_of_car, time_zone)
-      # get current time in the zone
-      # if falls in the difference 
-      # retun slow down factor speed
-    # zone_time = set_time_zone do
-    #   p Time.zone.now
-    # end
-    # puts zone_time.time
+    # get current time in the zone
+    # if falls in the difference 
+    # retun slow down factor speed
     zone_time = DateTime.now.in_time_zone(time_zone)
-    puts zone_time
     begining_of_day =  zone_time.beginning_of_day#zone_time.time.beginning_of_day
-    # byebug
+    percentage = 0
 
-    percentage = case zone_time
-    when zone_time.between?(begining_of_day+9.hours, begining_of_day+18.hours)
-      0
-    when zone_time.between?(begining_of_day+(18.hours+1.second), begining_of_day+(21.hours+30.minutes))
-      # 6pm – 9.30pm | 8%
-      puts "6pm – 9.30pm"
-      8
-    when zone_time.between?(begining_of_day+(21.hours+30.minutes+1.second), begining_of_day+6.hours)
-      # 9.30pm – 6am | 15%
-      puts "9.30pm – 6am"
-      15
-    when zone_time.between?(begining_of_day+6.hours, begining_of_day+(9.hours+30.minutes))
-      # 6am – 9am | 8%  
-      puts "6am – 9am"
-      8
+    if zone_time.between?(begining_of_day+9.hours, begining_of_day+18.hours)
+      percentage = 0
+    elsif zone_time.between?(begining_of_day+(18.hours+1.second), begining_of_day+(21.hours+30.minutes))
+      percentage = 8
+    elsif zone_time.between?(begining_of_day+(21.hours+30.minutes+1.second), begining_of_day+6.hours)
+      percentage = 15
+    elsif zone_time.between?(begining_of_day+6.hours, begining_of_day+(9.hours+30.minutes))
+      percentage = 8
     else
-      puts "else"
-      raise "error"
-      0     
-    end
+      percentage = 0
+    end        
+    percent_of(max_speed_of_car, factor: percentage.to_f)  
   end
 
   def set_time_zone(&block)
