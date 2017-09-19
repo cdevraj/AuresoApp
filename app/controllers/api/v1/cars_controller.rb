@@ -1,6 +1,4 @@
 class Api::V1::CarsController < ApplicationController
-  # respond_to :json
-
   def show
     car = Car.friendly.find(params[:id]) rescue nil
     if car
