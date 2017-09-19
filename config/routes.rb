@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :cars, only: :show
     end
     namespace :v2 do
-      get '/cars/:slug', to: 'cars#index'
+      resources :cars, only: :show
     end
   end
 

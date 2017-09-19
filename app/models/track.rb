@@ -1,4 +1,11 @@
 class Track < ActiveRecord::Base
+  scope :by_name, ->(name) { where(name: name) }
+  
+  def get_metadata(max_speed_of_car)
+    return 0 unless max_speed_of_car
+    max_speed_on_track = max_speed_of_car - percent_of(max_speed_of_car)
+  end
+
   def slow_down_for_zone(max_speed_of_car, time_zone)
     # get current time in the zone
     # if falls in the difference 
