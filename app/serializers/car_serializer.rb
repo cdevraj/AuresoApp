@@ -2,11 +2,8 @@ class CarSerializer < ActiveModel::Serializer
 	attributes :id, :slug, :max_speed, :max_speed_on_track  
 
 	def max_speed_on_track
-		if @instance_options[:track]
-			"#{@instance_options[:track].get_metadata(object.max_speed).to_i} " + "Km/hr"
-		else
-			'no track selected'
-		end
+		return 'no track selected' if @instance_options[:track].blank?
+		"#{@instance_options[:track].get_metadata(object.max_speed).to_i} " + "Km/hr"
 	end
 
 	def max_speed

@@ -1,7 +1,6 @@
 describe CarSerializer do
 
 	context "when track and car are present" do
-
 		before do
 		  # Create an instance of the model
 		  @car = FactoryGirl.create(:car)
@@ -28,7 +27,6 @@ describe CarSerializer do
 	end
 
 	context "when track is not provided" do
-
 		before do
 		  # Create an instance of the model
 		  @car = FactoryGirl.create(:car)

@@ -1,5 +1,4 @@
 class Track < ActiveRecord::Base
-
   scope :by_name, ->(name) { where(name: name) }
 
   def get_metadata(max_speed_of_car, time_zone: 'CET')
