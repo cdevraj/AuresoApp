@@ -37,8 +37,8 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include ApiHelper, type: :api
-  config.include Requests::JsonHelpers, type: :api
+  # config.include ApiHelper, type: :api
+  # config.include Requests::JsonHelpers, type: :api
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryGirl::Syntax::Methods
