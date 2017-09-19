@@ -1,13 +1,13 @@
 describe CarSerializer do
 
-  context "when track and car are present" do
+  context "when track, track params and car are present" do
     before do
       # Create an instance of the model
       @car = FactoryGirl.create(:car)
       @track = FactoryGirl.create(:track)
 
       # Create a serializer instance
-      @serializer = CarSerializer.new(@car, { track: @track })
+      @serializer = CarSerializer.new(@car, { track: @track, track_params: @track.name })
 
       # Create a serialization based on the configured adapter
       @serialization = ActiveModelSerializers::Adapter.create(@serializer)
@@ -24,6 +24,25 @@ describe CarSerializer do
     it 'should have a max_speed on track that matches' do
       expect(subject['max_speed_on_track']).to eql("65 Km/hr")
     end
+  end
+
+  context "when track_params is present but track not found" do
+    before do
+      # Create an instance of the model
+      @car = FactoryGirl.create(:car)
+      # Create a serializer instance
+      @serializer = CarSerializer.new(@car, {track_params: 'unknown'})
+
+      # Create a serialization based on the configured adapter
+      @serialization = ActiveModelSerializers::Adapter.create(@serializer)
+    end
+
+    subject { JSON.parse(@serialization.to_json) }
+
+    it 'should have a max_speed on track that matches track not found' do
+      expect(subject['max_speed_on_track']).to eql("track not found")
+    end
+
   end
 
   context "when track is not provided" do
