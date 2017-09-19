@@ -1,7 +1,7 @@
 class Api::V1::CarsController < ApplicationController
 	respond_to :json
 
-	def index
+	def show
 		car = Car.by_slug(params[:slug]).first
 		track = Track.by_name(params[:track]).first if params[:track]
 		if car
