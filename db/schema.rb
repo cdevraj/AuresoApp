@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918160642) do
+ActiveRecord::Schema.define(version: 20170918205708) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "slug"
@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 20170918160642) do
     t.integer  "slow_factor"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "time_zone"
   end
-
-  add_index "tracks", ["name"], name: "index_tracks_on_name"
 
 end
