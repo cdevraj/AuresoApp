@@ -1,4 +1,5 @@
 class Car < ActiveRecord::Base
-  scope :by_slug, ->(slug) { where(slug: slug) }
-
+ extend FriendlyId
+ friendly_id :slug, use: :slugged
+ 
 end
