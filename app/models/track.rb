@@ -12,7 +12,7 @@ class Track < ActiveRecord::Base
     # if falls in the difference 
     # retun slow down factor speed
     zone_time = DateTime.now.in_time_zone(time_zone)
-    begining_of_day =  zone_time.beginning_of_day#zone_time.time.beginning_of_day
+    begining_of_day =  zone_time.beginning_of_day
     percentage = 0
 
     if zone_time.between?(begining_of_day+9.hours, begining_of_day+18.hours)
@@ -24,6 +24,7 @@ class Track < ActiveRecord::Base
     elsif zone_time.between?(begining_of_day+6.hours, begining_of_day+(9.hours+30.minutes))
       percentage = 8
     else
+      puts "else"
       percentage = 0
     end        
     percent_of(max_speed_of_car, factor: percentage.to_f)  
