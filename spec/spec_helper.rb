@@ -18,6 +18,8 @@ require 'rspec-rails'
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
+  config.include SerializerSpecHelper, type: :serializer
+  config.include JsonParseHelper
   # config.include ApiHelper, type: :api
   # config.include Requests::JsonHelpers, type: :api
   # rspec-expectations config goes here. You can use an alternate
