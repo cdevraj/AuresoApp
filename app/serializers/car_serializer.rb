@@ -3,9 +3,13 @@ class CarSerializer < ActiveModel::Serializer
 
   def max_speed_on_track
     return 'no track selected' if @instance_options[:track_name].blank?
-    track = Track.by_name(@instance_options[:track_name]).first
+    track = @instance_options[:track]
     return 'track not found' if track.blank?
-    "#{track.get_metadata(object.max_speed, @instance_options[:with_time_zone]).to_f} Km/hr"
+    speed_calculator = SpeedCalculator.new(time_zone: track.time_zone,
+                                           slow_factor: track.slow_factor,
+                                           max_speed_of_car: object.max_speed,
+                                           with_time_zone: @instance_options[:with_time_zone])
+    "#{speed_calculator.calculate_speed_on_track.to_f} Km/hr"
   end
 
   def max_speed
